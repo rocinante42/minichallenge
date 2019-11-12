@@ -3,7 +3,7 @@ $(document).ready(function() {
   // GET the users first
   $.get("https://jsonplaceholder.typicode.com/users", function(names) {
     names.map(function(obj, index) {
-      //create each component div
+      //create component div
       var $component = $("<div>", {
         id: "component" + index,
         class: "component"

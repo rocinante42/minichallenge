@@ -17,14 +17,14 @@ body {
   display: inline-block;
   overflow: hidden;
   margin-top: 2rem;
-}
-.component img {
-  width: 70px;
-  height: 70px;
-  border: red;
-  border-style: solid;
-  border-width: 1px;
-  order: 1;
+  img {
+    width: 70px;
+    height: 70px;
+    border: red;
+    border-style: solid;
+    border-width: 1px;
+    order: 1;
+  }
 }
 
 .headerContainer {
@@ -32,10 +32,10 @@ body {
   display: flex;
   padding: 10px;
   width: fit-content;
-}
-.headerContainer h3 {
-  order: 2;
-  margin-left: 10px;
+  h3 {
+    order: 2;
+    margin-left: 10px;
+  }
 }
 
 .textContainer {
@@ -47,14 +47,14 @@ body {
   text-decoration: none;
   text-align: justify;
   text-justify: inter-word;
-}
-.textContainer p {
-  font-size: small;
-  line-height: 0.2px;
-  word-spacing: 3px;
-}
-.textContainer p:nth-child(odd) {
-  color: red;
+  p {
+    font-size: small;
+    line-height: 0.2px;
+    word-spacing: 3px;
+  }
+  p:nth-child(odd) {
+    color: red;
+  }
 }
 
 @media only screen and (max-width: 875px) {
@@ -63,34 +63,32 @@ body {
     padding: 0, 5%, 0, 5%;
   }
 }
+
 @media only screen and (max-width: 600px) {
   .container {
     padding: 0 0 0 0;
   }
-
   .component {
     width: 100%;
+    p {
+      white-space: pre-line;
+    }
   }
-  .component p {
-    white-space: pre-line;
-  }
-
   .headerContainer {
     -webkit-flex-direction: column-reverse;
     flex-direction: column;
     margin-bottom: 0px;
     margin-left: auto;
     margin-right: auto;
+    img {
+      align-self: center;
+    }
+    h3 {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
   }
-  .headerContainer img {
-    align-self: center;
-  }
-  .headerContainer h3 {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-  }
-
   .textContainer {
     width: 100%;
     overflow: auto;
@@ -103,5 +101,3 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-
-/*# sourceMappingURL=index.css.map */
