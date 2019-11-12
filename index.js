@@ -40,12 +40,14 @@ $(document).ready(function() {
 
       // See if everything is working
       $.get(
+        //pass params as objects not inside the url
         "https://jsonplaceholder.typicode.com/posts?userId=" + obj.id,
         function(data) {
           data.sort(function(a, b) {
             return b.title.length - a.title.length;
           });
           data.map(function(post) {
+            // use list and html instead
             $("#componentText" + index).append("<p>" + post.title + "</p>");
           });
         }
