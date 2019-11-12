@@ -1,6 +1,5 @@
 // brute force solution
 $(document).ready(function() {
-  var content = [];
   // GET the users first
   $.get("https://jsonplaceholder.typicode.com/users", function(names) {
     names.map(function(obj, index) {
@@ -25,13 +24,13 @@ $(document).ready(function() {
       $name.append(obj.name);
       // attach the name inside the heading container
       $headingContainer.append($name);
-      //default image and gender
-      content[index] = { name: obj.name, userId: obj.id };
       // Get the gender of the user
+      //default gender
+      var gender = "male";
       $.get(
         "https://api.genderize.io/?name=" + obj.name.split(" ")[0],
         function(genderize) {
-          content[index].gender = genderize.gender;
+          gender = genderize.gender;
         }
       )
         // If successful, attach the img html element to the heading container:
@@ -39,7 +38,7 @@ $(document).ready(function() {
           //get the image depending of the user's gender with ternary operator
           $headingContainer.append(
             '<img src="https://joeschmoe.io/api/v1/' +
-              (content[index].gender === "female" ? 'josephine"' : 'jacques"') +
+              (gender === "female" ? 'josephine"' : 'jacques"') +
               " />"
           );
         })
