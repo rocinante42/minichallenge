@@ -62,14 +62,25 @@ $(document).ready(function() {
             $textContainer.append("<p>" + post.title + "</p>");
           });
         }
-      ).done(function() {
-        $component.append($headingContainer);
-        $component.append($textContainer);
-        $(".container").append($component);
-      });
+      )
+        .done(function() {
+          $component.append($headingContainer);
+          $component.append($textContainer);
+          $(".container").append($component);
+        })
+        .fail(function() {
+          $textContainer.append("There was an error loading this resource.");
+          $component.append($headingContainer);
+          $component.append($textContainer);
+          $(".container").append($component);
+        });
       // close $get for text
     });
     // close map function for each user
+  }).fail(function() {
+    $(".container").html(
+      '<div class="error">There was an error loading your resources</div>'
+    );
   });
   // close $get for users.
 });
