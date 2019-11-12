@@ -3,41 +3,54 @@ $(document).ready(function() {
   var content = [];
   // GET the users first
   $.get("https://jsonplaceholder.typicode.com/users", function(names) {
-    names.map(function(object, index) {
-      // See if everything is working
+    names.map(function(obj, index) {
+      //create each component div
       $(".container").append(
         '<div class="component" id="component' + index + '"></div>'
       );
+      //create the container for the img and the name
       $("#component" + index).append(
-        '<h3 class="name">' + object.name + "</h3>"
+        '<div class="header" id="componentHeader' +
+          index +
+          '"></div><div class="text" id="componentText' +
+          index +
+          '" /> '
       );
-      content[index] = { name: object.name };
+      $("#componentHeader" + index).append(
+        '<h3 class="name">' + obj.name + "</h3>"
+      );
+      content[index] = { name: obj.name, userId: obj.id };
+      $("#componentHeader" + index).append(
+        '<img src="https://joeschmoe.io/api/v1/jacques" />'
+      );
       // Get the gender of the user
       $.get(
-        "https://api.genderize.io/?name=" + object.name.split(" ")[0],
+        "https://api.genderize.io/?name=" + obj.name.split(" ")[0],
         function(genderize) {
           content[index].gender = genderize.gender;
-          console.log(genderize);
         }
       ).done(function() {
-        $("#component" + index).before(
+        //get the image depending of the user's gender
+        $("#componentHeader" + index).append(
           '<img src="https://joeschmoe.io/api/v1/' +
-            (content[index].gender === "male" ? 'josephine"' : 'jacques"') +
+            (content[index].gender === "female" ? 'josephine"' : 'jacques"') +
             " />"
         );
       });
+
+      // See if everything is working
+      $.get(
+        "https://jsonplaceholder.typicode.com/posts?userId=" + obj.id,
+        function(data) {
+          data.sort(function(a, b) {
+            return b.title.length - a.title.length;
+          });
+          data.map(function(post) {
+            $("#componentText" + index).append("<p>" + post.title + "</p>");
+          });
+        }
+      );
     });
     // after getting the names:
-  }).done(function() {
-    // Get the body text of each user
-    $.get("https://jsonplaceholder.typicode.com/posts", function(data) {
-      content.map(function(obj, index) {
-        var lines = data[index].body.split("\n");
-        content[index].lines = lines;
-        lines.map(function(line) {
-          $("#component" + index).append("<p>" + line + "</p>");
-        });
-      });
-    }).done(function() {});
   });
 });
