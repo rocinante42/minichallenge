@@ -44,7 +44,6 @@ $(document).ready(function() {
         })
         // In case of error while calling the API, assign a default gender:
         .fail(function(error) {
-          console.log("whooops!");
           $headingContainer.append(
             '<img src="https://joeschmoe.io/api/v1/jacques" />'
           );

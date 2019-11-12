@@ -1,3 +1,9 @@
+$layout-medium-screen: 960px;
+$layout-small-screen: 640px;
+$layout-mini-screen: 400px;
+$odd-line-color: red;
+$img-box-border-color: red;
+
 body {
   margin: 0;
   padding: 0;
@@ -20,7 +26,7 @@ body {
   img {
     width: 70px;
     height: 70px;
-    border: red;
+    border: $img-box-border-color;
     border-style: solid;
     border-width: 1px;
     order: 1;
@@ -53,18 +59,18 @@ body {
     word-spacing: 3px;
   }
   p:nth-child(odd) {
-    color: red;
+    color: $odd-line-color;
   }
 }
 
-@media only screen and (max-width: 875px) {
+@media (max-width: $layout-medium-screen) {
   .component {
     width: 50%;
     padding: 0, 5%, 0, 5%;
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: $layout-small-screen) {
   .container {
     padding: 0 0 0 0;
   }
@@ -94,6 +100,14 @@ body {
     overflow: auto;
     text-align: center;
     overflow-wrap: break-word;
+  }
+}
+@media (max-width: $layout-mini-screen) {
+  .textContainer {
+    overflow: hidden;
+    background-color: indianred;
+    overflow-wrap: break-word;
+    word-spacing: initial;
   }
 }
 .error {

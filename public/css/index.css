@@ -57,13 +57,13 @@ body {
   color: red;
 }
 
-@media only screen and (max-width: 875px) {
+@media (max-width: 960px) {
   .component {
     width: 50%;
     padding: 0, 5%, 0, 5%;
   }
 }
-@media only screen and (max-width: 600px) {
+@media (max-width: 640px) {
   .container {
     padding: 0 0 0 0;
   }
@@ -96,6 +96,14 @@ body {
     overflow: auto;
     text-align: center;
     overflow-wrap: break-word;
+  }
+}
+@media (max-width: 400px) {
+  .textContainer {
+    overflow: hidden;
+    background-color: indianred;
+    overflow-wrap: break-word;
+    word-spacing: initial;
   }
 }
 .error {
