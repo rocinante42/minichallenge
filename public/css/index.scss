@@ -78,9 +78,6 @@ body {
   }
   .component {
     width: 100%;
-    p {
-      white-space: pre-line;
-    }
   }
   .headerContainer {
     -webkit-flex-direction: column-reverse;
@@ -106,10 +103,12 @@ body {
 }
 @media (max-width: $layout-mini-screen) {
   .textContainer {
-    overflow: hidden;
-    background-color: indianred;
     overflow-wrap: break-word;
     word-spacing: initial;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: initial;
+    overflow: hidden;
   }
 }
 .error {
