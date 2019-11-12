@@ -3,6 +3,8 @@ $layout-small-screen: 640px;
 $layout-mini-screen: 400px;
 $odd-line-color: red;
 $img-box-border-color: red;
+$layout-component-width-medium: 50%;
+$layout-component-width: 33.33%;
 
 body {
   margin: 0;
@@ -18,7 +20,7 @@ body {
 }
 
 .component {
-  width: 33.33%;
+  width: $layout-component-width;
   text-align: center;
   display: inline-block;
   overflow: hidden;
@@ -65,7 +67,7 @@ body {
 
 @media (max-width: $layout-medium-screen) {
   .component {
-    width: 50%;
+    width: $layout-component-width-medium;
     padding: 0, 5%, 0, 5%;
   }
 }
