@@ -31,7 +31,7 @@ function setImageString(gender) {
     " />"
   );
 }
-
+// Main function
 $(document).ready(function() {
   // Returns an array objects that represents users from the api
   getUsersAsync().then(function(users) {
@@ -51,7 +51,6 @@ $(document).ready(function() {
         class: "headerContainer"
       });
       // create the name html element
-      $name = $("<h3>", { class: "name" }).append(user.name);
       var $img = "";
       // start getting chain data
       getGenderOfUserAsync(user.name)
@@ -64,14 +63,18 @@ $(document).ready(function() {
         })
         .then(function(lines) {
           $textContainer.html(lines);
-          $headingContainer.append($name);
+          $name = $("<h3>", { class: "name" }).append(user.name);
           $headingContainer.append($img);
+          $headingContainer.append($name);
+        })
+        .fail(function() {
+          aler("Something went wrong!");
         })
         .done(function() {
           $component.append($headingContainer);
           $component.append($textContainer);
           $(".container").append($component);
         });
-    });
-  });
-});
+    }); // end of map function
+  }); // end of getNames
+}); // end of main function
